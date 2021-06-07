@@ -1,1 +1,5 @@
+# lixo gerado pelo python
 __pycache__/
+
+# os bancos de dados não serão armazenados no versionamento
+*.db
