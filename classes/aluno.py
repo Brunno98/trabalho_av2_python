@@ -2,15 +2,15 @@ from .nota import Nota
 
 class Aluno:
 
-    def __init__(self, nome: str, materia: str, nota1: Nota, nota2: Nota,
-            recuperacao: Nota, digital: Nota, recuperacaoDigital: Nota):
+    def __init__(self, nome: str, materia: str, nota1: float, nota2: float,
+            recuperacao: float, digital: float, recuperacaoDigital: float):
         self.nome = nome.strip().title()
         self.materia = materia.strip().capitalize()
-        self.av1 = nota1
-        self.av2 = nota2
-        self.av3 = recuperacao
-        self.avd = digital
-        self.avds = recuperacaoDigital
+        self.av1 = Nota(nota1)
+        self.av2 = Nota(nota2)
+        self.av3 = Nota(recuperacao)
+        self.avd = Nota(digital)
+        self.avds = Nota(recuperacaoDigital)
 
     
     @property
