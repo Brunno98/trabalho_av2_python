@@ -26,6 +26,7 @@ avd = tk.StringVar()
 avds = tk.StringVar()
 pesquisa = tk.StringVar()
 valor_comboBox = tk.StringVar()
+newWindow = None
 
 # ============= MÉTODOS ==============
 
@@ -42,6 +43,7 @@ def inserir():
 		)
 		banco.inserir(aluno)
 		limpar_campos()
+		newWindow.destroy()
 		atualiza_treeView()
 
 def alterar():
@@ -109,6 +111,121 @@ def onSelect(event):
 	av3.set(itemSelected[5]),
 	avd.set(itemSelected[6]),
 	avds.set(itemSelected[7])
+	abrirJanelaDeAtualiza()
+
+def abrirJanelaDeAtualiza():
+	updateWindow = tk.Toplevel()
+	updateWindow.title("Atualizando registro.")
+	width = 480
+	height = 300
+	sc_width = updateWindow.winfo_screenwidth()
+	sc_height = updateWindow.winfo_screenheight()
+	x = (sc_width / 2) - (width / 2)
+	y = (sc_height / 2) - (height / 2)
+	updateWindow.geometry("%dx%d+%d+%d" % (width, height, x, y))
+	updateWindow.resizable()
+
+	formTitle = tk.Frame(updateWindow)
+	formTitle.pack(side=tk.TOP)
+
+	lbl_title = tk.Label(formTitle, text="Atualizando registro", font=("Arial", 18))
+	lbl_title.pack(fill=tk.X)
+
+	frame_formulario = tk.Frame(updateWindow)
+	frame_formulario.pack(side=tk.TOP, pady=10)
+
+	lbl_nome = tk.Label(frame_formulario, text="Nome")
+	lbl_materia = tk.Label(frame_formulario, text="Materia")
+	lbl_av1 = tk.Label(frame_formulario, text="AV1")
+	lbl_av2 = tk.Label(frame_formulario, text="AV2")
+	lbl_av3 = tk.Label(frame_formulario, text="AV3")
+	lbl_avd = tk.Label(frame_formulario, text="AVD")
+	lbl_avds = tk.Label(frame_formulario, text="AVDS")
+
+	lbl_nome.grid(row=0 , column=0)
+	lbl_materia.grid(row=1 , column=0)
+	lbl_av1.grid(row=2 , column=0)
+	lbl_av2.grid(row=3 , column=0)
+	lbl_av3.grid(row=4 , column=0)
+	lbl_avd.grid(row=5 , column=0)
+	lbl_avds.grid(row=6 , column=0)
+
+	entry_nome = tk.Entry(frame_formulario, textvariable=nome )
+	entry_materia = tk.Entry(frame_formulario, textvariable=materia )
+	entry_av1 = tk.Entry(frame_formulario, textvariable=av1 )
+	entry_av2 = tk.Entry(frame_formulario, textvariable=av2 )
+	entry_av3 = tk.Entry(frame_formulario, textvariable=av3 )
+	entry_avd = tk.Entry(frame_formulario, textvariable=avd )
+	entry_avds = tk.Entry(frame_formulario, textvariable=avds )
+
+	entry_nome.grid(row=0 ,column=1)
+	entry_materia.grid(row=1 ,column=1)
+	entry_av1.grid(row=2 ,column=1)
+	entry_av2.grid(row=3 ,column=1)
+	entry_av3.grid(row=4 ,column=1)
+	entry_avd.grid(row=5 ,column=1)
+	entry_avds.grid(row=6 ,column=1)
+
+	bttn_alterar = tk.Button(frame_formulario, text="Alterar", width=30, command=alterar)
+	bttn_alterar.grid(row=7, columnspan=2, pady=10)
+
+def abrirJanelaDeInserir():
+	limpar_campos()
+	global newWindow
+	newWindow = tk.Toplevel()
+	newWindow.title("Inserindo registro.")
+	width = 480
+	height = 300
+	sc_width = newWindow.winfo_screenwidth()
+	sc_height = newWindow.winfo_screenheight()
+	x = (sc_width / 2) - (width / 2)
+	y = (sc_height / 2) - (height / 2)
+	newWindow.geometry("%dx%d+%d+%d" % (width, height, x, y))
+	newWindow.resizable()
+
+	formTitle = tk.Frame(newWindow)
+	formTitle.pack(side=tk.TOP)
+
+	lbl_title = tk.Label(formTitle, text="Inserindo novo registro", font=("Arial", 18))
+	lbl_title.pack(fill=tk.X)
+
+	frame_formulario = tk.Frame(newWindow)
+	frame_formulario.pack(side=tk.TOP, pady=10)
+
+	lbl_nome = tk.Label(frame_formulario, text="Nome")
+	lbl_materia = tk.Label(frame_formulario, text="Materia")
+	lbl_av1 = tk.Label(frame_formulario, text="AV1")
+	lbl_av2 = tk.Label(frame_formulario, text="AV2")
+	lbl_av3 = tk.Label(frame_formulario, text="AV3")
+	lbl_avd = tk.Label(frame_formulario, text="AVD")
+	lbl_avds = tk.Label(frame_formulario, text="AVDS")
+
+	lbl_nome.grid(row=0 , column=0)
+	lbl_materia.grid(row=1 , column=0)
+	lbl_av1.grid(row=2 , column=0)
+	lbl_av2.grid(row=3 , column=0)
+	lbl_av3.grid(row=4 , column=0)
+	lbl_avd.grid(row=5 , column=0)
+	lbl_avds.grid(row=6 , column=0)
+
+	entry_nome = tk.Entry(frame_formulario, textvariable=nome )
+	entry_materia = tk.Entry(frame_formulario, textvariable=materia )
+	entry_av1 = tk.Entry(frame_formulario, textvariable=av1 )
+	entry_av2 = tk.Entry(frame_formulario, textvariable=av2 )
+	entry_av3 = tk.Entry(frame_formulario, textvariable=av3 )
+	entry_avd = tk.Entry(frame_formulario, textvariable=avd )
+	entry_avds = tk.Entry(frame_formulario, textvariable=avds )
+
+	entry_nome.grid(row=0 ,column=1)
+	entry_materia.grid(row=1 ,column=1)
+	entry_av1.grid(row=2 ,column=1)
+	entry_av2.grid(row=3 ,column=1)
+	entry_av3.grid(row=4 ,column=1)
+	entry_avd.grid(row=5 ,column=1)
+	entry_avds.grid(row=6 ,column=1)
+
+	bttn_inserir = tk.Button(frame_formulario, text="Inserir", width=30, command=inserir)
+	bttn_inserir.grid(row=7, columnspan=2, pady=10)
 
 def valida_campos():
 	# verifica se há campo vazio
@@ -147,59 +264,16 @@ def atualiza_treeView():
 		treeView.insert('', "end", values=(registro))
 
 
-# ============= FRAME INPUTS =========
-
-frame_campos = tk.Frame(root)
-frame_campos.pack()
-
-lbl_nome = tk.Label(frame_campos, text="Nome")
-lbl_materia = tk.Label(frame_campos, text="Materia")
-lbl_av1 = tk.Label(frame_campos, text="AV1")
-lbl_av2 = tk.Label(frame_campos, text="AV2")
-lbl_av3 = tk.Label(frame_campos, text="AV3")
-lbl_avd = tk.Label(frame_campos, text="AVD")
-lbl_avds = tk.Label(frame_campos, text="AVDS")
-
-lbl_nome.grid(row=0 , column=0)
-lbl_materia.grid(row=1 , column=0)
-lbl_av1.grid(row=2 , column=0)
-lbl_av2.grid(row=3 , column=0)
-lbl_av3.grid(row=4 , column=0)
-lbl_avd.grid(row=5 , column=0)
-lbl_avds.grid(row=6 , column=0)
-
-entry_nome = tk.Entry(frame_campos, textvariable=nome )
-entry_materia = tk.Entry(frame_campos, textvariable=materia )
-entry_av1 = tk.Entry(frame_campos, textvariable=av1 )
-entry_av2 = tk.Entry(frame_campos, textvariable=av2 )
-entry_av3 = tk.Entry(frame_campos, textvariable=av3 )
-entry_avd = tk.Entry(frame_campos, textvariable=avd )
-entry_avds = tk.Entry(frame_campos, textvariable=avds )
-
-entry_nome.grid(row=0 ,column=1)
-entry_materia.grid(row=1 ,column=1)
-entry_av1.grid(row=2 ,column=1)
-entry_av2.grid(row=3 ,column=1)
-entry_av3.grid(row=4 ,column=1)
-entry_avd.grid(row=5 ,column=1)
-entry_avds.grid(row=6 ,column=1)
-
 # ============ FRAME BOTÕES ===========
 
 frame_botoes = tk.Frame(root)
-frame_botoes.pack()
+frame_botoes.pack(side=tk.BOTTOM)
 
-bttn_inserir = tk.Button(frame_botoes, text="Inserir", command=inserir)
-bttn_alterar = tk.Button(frame_botoes, text="Alterar", command=alterar)
+bttn_abrirJanelaInserir = tk.Button(frame_botoes, text="Inserir novo registro", command=abrirJanelaDeInserir)
 bttn_deletar = tk.Button(frame_botoes, text="Deletar", command=deletar)
-bttn_limpar = tk.Button(frame_botoes, text="Limpar", command=limpar_campos)
-#bttn_pesquisar = tk.Button(frame_botoes, text="Pesquisar")#, command=pass)
 
-bttn_inserir.grid(row=0, column=0)
-bttn_alterar.grid(row=0, column=1)
-bttn_deletar.grid(row=0, column=2)
-bttn_limpar.grid(row=0, column=3)
-#bttn_pesquisar.grid(row=0, column=4)
+bttn_abrirJanelaInserir.grid(row=0, column=0)
+bttn_deletar.grid(row=0, column=1, pady=10, padx=5)
 
 
 # =========== FRAME REGISTROS E FILTROS ========
@@ -226,7 +300,7 @@ bttn_limpar_filtro.grid(row=0, column=4)
 
 
 frame_tabela = tk.Frame(frame_registros)
-frame_tabela.pack(side=tk.BOTTOM)
+frame_tabela.pack(side=tk.BOTTOM, fill=tk.X)
 
 scroolbar_y = tk.Scrollbar(frame_tabela, orient=tk.VERTICAL)
 scroolbar_x = tk.Scrollbar(frame_tabela, orient=tk.HORIZONTAL)
