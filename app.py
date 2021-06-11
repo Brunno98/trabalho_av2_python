@@ -303,7 +303,7 @@ frame_registros = tk.Frame(root, bg=COR["fundo_claro"])
 frame_registros.pack()
 
 frame_filtros = tk.Frame(frame_registros, bg=COR["fundo_claro"])
-frame_filtros.pack()
+frame_filtros.pack(pady=5)
 
 lbl_pesquisar = tk.Label(frame_filtros, text="Filtrar nome/matéria:", bg=COR["fundo_claro"])
 lbl_pesquisar.grid(row=0, column=0)
