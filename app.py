@@ -30,9 +30,14 @@ root.geometry("%dx%d+%d+%d" % (width, height, x, y))
 root.resizable(0, 0)
 root.config(bg=COR["fundo_claro"])
 
-# ============ FRAMES DE MARGEM =========== 
-margem_topo = tk.Frame(root, height=20, bg=COR["fundo_claro"])
-margem_topo.pack(side=tk.TOP, fill=tk.X)
+# ============ FRAME DE TITULO =========== 
+frame_titulo = tk.Frame(root, height=20, bg=COR["fundo_escuro"])
+frame_titulo.pack(side=tk.TOP, fill=tk.X)
+
+lbl_titulo = tk.Label(frame_titulo, text="Sistema de Gerenciamento De Notas de Alunos", font=("arial", 18), foreground="white", bg=COR["fundo_escuro"])
+lbl_titulo.pack(pady=10)
+
+# ============ FRAME DA MARGEM DA BASE ===========
 margem_base = tk.Frame(root, height=20, bg=COR["fundo_claro"])
 margem_base.pack(side=tk.BOTTOM, fill=tk.X)
 
