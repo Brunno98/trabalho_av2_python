@@ -4,6 +4,20 @@ import tkinter.messagebox as msb
 from classes.aluno import Aluno
 from banco import banco
 
+# ========= CORES ==========
+
+COR = {
+	"fundo_escuro": "#3598db",
+	"fundo_claro": "#f3f5f6",
+	"inserir": "#3598db",
+	"deletar": "#aa0b0b",
+	"alterar": "#3598db",
+	"filtrar": "#85d4dc",
+	"limpar_filtro": "#dee1e3"
+}
+
+
+# =========== FRAME PRINCIPAL ============
 root = tk.Tk()
 root.title("Escola")
 width = 800
@@ -14,11 +28,12 @@ x = (screen_w / 2) - (width / 2)
 y = (screen_h / 2) - (height / 2)
 root.geometry("%dx%d+%d+%d" % (width, height, x, y))
 root.resizable(0, 0)
+root.config(bg=COR["fundo_claro"])
 
 # ============ FRAMES DE MARGEM =========== 
-margem_topo = tk.Frame(root, height=20)
+margem_topo = tk.Frame(root, height=20, bg=COR["fundo_claro"])
 margem_topo.pack(side=tk.TOP, fill=tk.X)
-margem_base = tk.Frame(root, height=20)
+margem_base = tk.Frame(root, height=20, bg=COR["fundo_claro"])
 margem_base.pack(side=tk.BOTTOM, fill=tk.X)
 
 # ============ VARIAVEIS ===========
@@ -120,7 +135,7 @@ def onSelect(event):
 	abrirJanelaDeAtualiza()
 
 def abrirJanelaDeAtualiza():
-	updateWindow = tk.Toplevel()
+	updateWindow = tk.Toplevel(bg=COR["fundo_claro"])
 	updateWindow.title("Atualizando registro.")
 	width = 480
 	height = 300
@@ -131,22 +146,22 @@ def abrirJanelaDeAtualiza():
 	updateWindow.geometry("%dx%d+%d+%d" % (width, height, x, y))
 	updateWindow.resizable()
 
-	formTitle = tk.Frame(updateWindow)
-	formTitle.pack(side=tk.TOP)
+	formTitle = tk.Frame(updateWindow, bg=COR["fundo_escuro"])
+	formTitle.pack(side=tk.TOP, fill=tk.X)
 
-	lbl_title = tk.Label(formTitle, text="Atualizando registro", font=("Arial", 18))
-	lbl_title.pack(fill=tk.X)
+	lbl_title = tk.Label(formTitle, text="Atualizando registro", font=("Arial", 18), bg=COR["fundo_escuro"])
+	lbl_title.pack(fill=tk.X, pady=10)
 
-	frame_formulario = tk.Frame(updateWindow)
+	frame_formulario = tk.Frame(updateWindow, bg=COR["fundo_claro"])
 	frame_formulario.pack(side=tk.TOP, pady=10)
 
-	lbl_nome = tk.Label(frame_formulario, text="Nome")
-	lbl_materia = tk.Label(frame_formulario, text="Materia")
-	lbl_av1 = tk.Label(frame_formulario, text="AV1")
-	lbl_av2 = tk.Label(frame_formulario, text="AV2")
-	lbl_av3 = tk.Label(frame_formulario, text="AV3")
-	lbl_avd = tk.Label(frame_formulario, text="AVD")
-	lbl_avds = tk.Label(frame_formulario, text="AVDS")
+	lbl_nome = tk.Label(frame_formulario, text="Nome", bg=COR["fundo_claro"])
+	lbl_materia = tk.Label(frame_formulario, text="Materia", bg=COR["fundo_claro"])
+	lbl_av1 = tk.Label(frame_formulario, text="AV1", bg=COR["fundo_claro"])
+	lbl_av2 = tk.Label(frame_formulario, text="AV2", bg=COR["fundo_claro"])
+	lbl_av3 = tk.Label(frame_formulario, text="AV3", bg=COR["fundo_claro"])
+	lbl_avd = tk.Label(frame_formulario, text="AVD", bg=COR["fundo_claro"])
+	lbl_avds = tk.Label(frame_formulario, text="AVDS", bg=COR["fundo_claro"])
 
 	lbl_nome.grid(row=0 , column=0)
 	lbl_materia.grid(row=1 , column=0)
@@ -172,13 +187,13 @@ def abrirJanelaDeAtualiza():
 	entry_avd.grid(row=5 ,column=1)
 	entry_avds.grid(row=6 ,column=1)
 
-	bttn_alterar = tk.Button(frame_formulario, text="Alterar", width=30, command=alterar)
+	bttn_alterar = tk.Button(frame_formulario, text="Alterar", width=30, command=alterar, bg=COR["alterar"])
 	bttn_alterar.grid(row=7, columnspan=2, pady=10)
 
 def abrirJanelaDeInserir():
 	limpar_campos()
 	global newWindow
-	newWindow = tk.Toplevel()
+	newWindow = tk.Toplevel(bg=COR["fundo_claro"])
 	newWindow.title("Inserindo registro.")
 	width = 480
 	height = 300
@@ -189,22 +204,22 @@ def abrirJanelaDeInserir():
 	newWindow.geometry("%dx%d+%d+%d" % (width, height, x, y))
 	newWindow.resizable()
 
-	formTitle = tk.Frame(newWindow)
-	formTitle.pack(side=tk.TOP)
+	formTitle = tk.Frame(newWindow, bg=COR["fundo_escuro"])
+	formTitle.pack(side=tk.TOP, fill=tk.X)
 
-	lbl_title = tk.Label(formTitle, text="Inserindo novo registro", font=("Arial", 18))
-	lbl_title.pack(fill=tk.X)
+	lbl_title = tk.Label(formTitle, text="Inserindo novo registro", font=("Arial", 18), bg=COR["fundo_escuro"])
+	lbl_title.pack(fill=tk.X, pady=10)
 
-	frame_formulario = tk.Frame(newWindow)
+	frame_formulario = tk.Frame(newWindow, bg=COR["fundo_claro"])
 	frame_formulario.pack(side=tk.TOP, pady=10)
 
-	lbl_nome = tk.Label(frame_formulario, text="Nome")
-	lbl_materia = tk.Label(frame_formulario, text="Materia")
-	lbl_av1 = tk.Label(frame_formulario, text="AV1")
-	lbl_av2 = tk.Label(frame_formulario, text="AV2")
-	lbl_av3 = tk.Label(frame_formulario, text="AV3")
-	lbl_avd = tk.Label(frame_formulario, text="AVD")
-	lbl_avds = tk.Label(frame_formulario, text="AVDS")
+	lbl_nome = tk.Label(frame_formulario, text="Nome", bg=COR["fundo_claro"])
+	lbl_materia = tk.Label(frame_formulario, text="Materia", bg=COR["fundo_claro"])
+	lbl_av1 = tk.Label(frame_formulario, text="AV1", bg=COR["fundo_claro"])
+	lbl_av2 = tk.Label(frame_formulario, text="AV2", bg=COR["fundo_claro"])
+	lbl_av3 = tk.Label(frame_formulario, text="AV3", bg=COR["fundo_claro"])
+	lbl_avd = tk.Label(frame_formulario, text="AVD", bg=COR["fundo_claro"])
+	lbl_avds = tk.Label(frame_formulario, text="AVDS", bg=COR["fundo_claro"])
 
 	lbl_nome.grid(row=0 , column=0)
 	lbl_materia.grid(row=1 , column=0)
@@ -230,7 +245,7 @@ def abrirJanelaDeInserir():
 	entry_avd.grid(row=5 ,column=1)
 	entry_avds.grid(row=6 ,column=1)
 
-	bttn_inserir = tk.Button(frame_formulario, text="Inserir", width=30, command=inserir)
+	bttn_inserir = tk.Button(frame_formulario, text="Inserir", width=30, command=inserir, bg=COR["inserir"])
 	bttn_inserir.grid(row=7, columnspan=2, pady=10)
 
 def valida_campos():
@@ -272,11 +287,11 @@ def atualiza_treeView():
 
 # ============ FRAME BOTÕES ===========
 
-frame_botoes = tk.Frame(root)
+frame_botoes = tk.Frame(root, bg=COR["fundo_claro"])
 frame_botoes.pack(side=tk.BOTTOM)
 
-bttn_abrirJanelaInserir = tk.Button(frame_botoes, text="Inserir novo registro", command=abrirJanelaDeInserir)
-bttn_deletar = tk.Button(frame_botoes, text="Deletar", command=deletar)
+bttn_abrirJanelaInserir = tk.Button(frame_botoes, text="Inserir novo registro", command=abrirJanelaDeInserir, bg=COR["inserir"])
+bttn_deletar = tk.Button(frame_botoes, text="Deletar", command=deletar, bg=COR["deletar"], foreground="white")
 
 bttn_abrirJanelaInserir.grid(row=0, column=0)
 bttn_deletar.grid(row=0, column=1, pady=10, padx=5)
@@ -284,13 +299,13 @@ bttn_deletar.grid(row=0, column=1, pady=10, padx=5)
 
 # =========== FRAME REGISTROS E FILTROS ========
 
-frame_registros = tk.Frame(root)
+frame_registros = tk.Frame(root, bg=COR["fundo_claro"])
 frame_registros.pack()
 
-frame_filtros = tk.Frame(frame_registros)
+frame_filtros = tk.Frame(frame_registros, bg=COR["fundo_claro"])
 frame_filtros.pack()
 
-lbl_pesquisar = tk.Label(frame_filtros, text="Filtrar nome/matéria:")
+lbl_pesquisar = tk.Label(frame_filtros, text="Filtrar nome/matéria:", bg=COR["fundo_claro"])
 lbl_pesquisar.grid(row=0, column=0)
 entry_pesquisar = tk.Entry(frame_filtros, textvariable=pesquisa)
 entry_pesquisar.grid(row=0, column=1)
@@ -299,13 +314,13 @@ dropdown_situacao["values"] = ("situação", "aprovado", "reprovado")
 dropdown_situacao.current(0)
 dropdown_situacao["state"] = "readonly"
 dropdown_situacao.grid(row=0, column=2)
-bttn_filtrar = tk.Button(frame_filtros, text="Filtrar", command=filtrar)
+bttn_filtrar = tk.Button(frame_filtros, text="Filtrar", command=filtrar, bg=COR["filtrar"])
 bttn_filtrar.grid(row=0, column=3)
-bttn_limpar_filtro = tk.Button(frame_filtros, text="Limpar filtro", command=limpar_filtro)
+bttn_limpar_filtro = tk.Button(frame_filtros, text="Limpar filtro", command=limpar_filtro, bg=COR["limpar_filtro"])
 bttn_limpar_filtro.grid(row=0, column=4)
 
 
-frame_tabela = tk.Frame(frame_registros)
+frame_tabela = tk.Frame(frame_registros, bg=COR["fundo_claro"])
 frame_tabela.pack(side=tk.BOTTOM, fill=tk.X)
 
 scroolbar_y = tk.Scrollbar(frame_tabela, orient=tk.VERTICAL)
