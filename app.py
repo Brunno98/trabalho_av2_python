@@ -15,6 +15,12 @@ y = (screen_h / 2) - (height / 2)
 root.geometry("%dx%d+%d+%d" % (width, height, x, y))
 root.resizable(0, 0)
 
+# ============ FRAMES DE MARGEM =========== 
+margem_topo = tk.Frame(root, height=20)
+margem_topo.pack(side=tk.TOP, fill=tk.X)
+margem_base = tk.Frame(root, height=20)
+margem_base.pack(side=tk.BOTTOM, fill=tk.X)
+
 # ============ VARIAVEIS ===========
 id = None
 nome = tk.StringVar()
