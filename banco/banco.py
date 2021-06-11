@@ -101,7 +101,7 @@ def pesquisar(palavra, situacao):
 
 def verTodos():
     try:
-        sql = "SELECT * FROM aluno"
+        sql = "SELECT * FROM aluno ORDER BY nome"
         conn, cursor = conexao()
         cursor.execute(sql)
     except sqlite3.Error as e:

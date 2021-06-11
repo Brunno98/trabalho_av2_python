@@ -29,7 +29,8 @@ class Aluno:
         notas_digital.sort(reverse=True)
         digital = notas_digital[0]
 
-        return (nota1 + nota2 + digital) / 3
+        media = (nota1 + nota2 + digital) / 3
+        return round(media, 1)
 
 
     @property
