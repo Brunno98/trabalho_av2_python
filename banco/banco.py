@@ -84,7 +84,7 @@ def deletar(id):
 
 def pesquisar(palavra, situacao):
     try:
-        sql = "SELECT * FROM aluno WHERE (nome LIKE ? or materia LIKE ?) AND situacao LIKE ? "
+        sql = "SELECT * FROM aluno WHERE (nome LIKE ? or materia LIKE ?) AND situacao LIKE ? ORDER BY nome"
         conn, cursor = conexao()
         cursor.execute(sql, ("%"+str(palavra)+"%", "%"+str(palavra)+"%", "%"+situacao+"%"))
     except sqlite3.Error as e:
