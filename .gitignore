@@ -3,3 +3,6 @@ __pycache__/
 
 # os bancos de dados não serão armazenados no versionamento
 *.db
+
+# qualque arquivo zip
+*.zip
