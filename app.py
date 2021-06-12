@@ -53,6 +53,7 @@ avds = tk.StringVar()
 pesquisa = tk.StringVar()
 valor_comboBox = tk.StringVar()
 newWindow = None
+updateWindow = None
 
 # ============= MÉTODOS ==============
 
@@ -86,6 +87,7 @@ def alterar():
 		)
 		banco.alterar(id, aluno)
 		limpar_campos()
+		updateWindow.destroy()
 		atualiza_treeView()
 
 def deletar():
@@ -140,6 +142,7 @@ def onSelect(event):
 	abrirJanelaDeAtualiza()
 
 def abrirJanelaDeAtualiza():
+	global updateWindow
 	updateWindow = tk.Toplevel(bg=COR["fundo_claro"])
 	updateWindow.title("Atualizando registro.")
 	width = 480
