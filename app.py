@@ -259,10 +259,15 @@ def abrirJanelaDeInserir():
 def valida_campos():
 	# verifica se há campo vazio
 	if (nome.get() == "" or materia.get() == "" or av1.get() == "" or
-	av2.get() == "" or av3.get() == "" or avd.get() == "" or
-	avds.get() == ""):
-		msb.showwarning("Dados inválidos", "Por favor, preencha todos os campos")
+	av2.get() == "" or avd.get() == ""):
+		msb.showwarning("Dados inválidos", "Por favor, preencha os campos nome, materia, AV1, AV2 e AVD")
 		return False
+
+	# caso aluno não tenha feito av3 ou avds
+	if not av3.get():
+		av3.set(0)
+	if not avds.get():
+		avds.set(0)
 
 	# verifica se a nota é um valor valido
 	try:
