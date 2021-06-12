@@ -1,4 +1,4 @@
-from .nota import Nota
+#from .nota import Nota
 
 class Aluno:
 
@@ -6,11 +6,11 @@ class Aluno:
             recuperacao: float, digital: float, recuperacaoDigital: float):
         self.nome = nome.strip().title()
         self.materia = materia.strip().capitalize()
-        self.av1 = Nota(nota1)
-        self.av2 = Nota(nota2)
-        self.av3 = Nota(recuperacao)
-        self.avd = Nota(digital)
-        self.avds = Nota(recuperacaoDigital)
+        self.av1 = float(nota1)
+        self.av2 = float(nota2)
+        self.av3 = float(recuperacao)
+        self.avd = float(digital)
+        self.avds = float(recuperacaoDigital)
 
     
     @property

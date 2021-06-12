@@ -8,8 +8,6 @@ class Nota(float):
 
 
     def __repr__(self) -> str:
-        if self.nota < 4:
-            return str(self.nota).replace('.', ',') + '*'
         return str(self.nota).replace('.', ',')
 
     def __str__(self) -> str:
